@@ -129,6 +129,35 @@
     });
   }
 
+  /* ---------- Áreas de atuação: busca (ignora maiúsculas/acentos/cedilha) ---------- */
+  var areaSearch = document.getElementById('areaSearch');
+  if (areaSearch) {
+    var grid = document.querySelector('.areas-grid');
+    var cards = grid ? Array.prototype.slice.call(grid.querySelectorAll('.area-card:not(.area-cta)')) : [];
+    var clearBtn = document.getElementById('areaSearchClear');
+    var noResult = document.getElementById('areaNoResult');
+    function norm(s) {
+      return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+    }
+    cards.forEach(function (c) {
+      c._text = norm(c.textContent + ' ' + (c.getAttribute('data-keywords') || ''));
+    });
+    function filterAreas() {
+      var q = norm(areaSearch.value);
+      var terms = q ? q.split(' ') : [];
+      var visible = 0;
+      cards.forEach(function (c) {
+        var show = terms.every(function (t) { return c._text.indexOf(t) !== -1; });
+        c.classList.toggle('is-hidden', !show);
+        if (show) visible++;
+      });
+      if (clearBtn) clearBtn.hidden = !areaSearch.value;
+      if (noResult) noResult.hidden = !(q && visible === 0);
+    }
+    areaSearch.addEventListener('input', filterAreas);
+    if (clearBtn) clearBtn.addEventListener('click', function () { areaSearch.value = ''; filterAreas(); areaSearch.focus(); });
+  }
+
   /* ---------- Map consent loader ---------- */
   function loadMap() {
     var f = document.getElementById('mapFrame'), ph = document.getElementById('mapPh');
