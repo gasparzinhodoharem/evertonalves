@@ -234,6 +234,19 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
 .stat .lbl { margin-top: 8px; font-size: .92rem; color: #c7c8ba; letter-spacing: .02em; }
 
 /* ============================================================
+   INTRO / POSICIONAMENTO
+   ============================================================ */
+.intro { background: var(--paper); position: relative; overflow: hidden; text-align: center; }
+.intro .emblem-bg { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(6deg); width: 560px; max-width: 80%; opacity: .045; pointer-events: none; }
+.intro .wrap { position: relative; z-index: 1; }
+.intro-inner { max-width: 900px; margin: 0 auto; }
+.intro-mark { display: block; width: 58px; height: 58px; margin: 0 auto 26px; }
+.intro-mark img { width: 100%; height: 100%; object-fit: contain; }
+.intro-title { font-size: clamp(2rem, 3.8vw, 3.15rem); line-height: 1.12; color: var(--ink); max-width: 20ch; margin: 0 auto 24px; }
+.intro-rule { width: 70px; height: 2px; background: var(--sage); margin: 0 auto 24px; }
+.intro-sub { font-size: 1.2rem; color: var(--ink-soft); max-width: 62ch; margin: 0 auto; line-height: 1.7; }
+
+/* ============================================================
    EMPATHY BAND ("Você foi demitido?")
    ============================================================ */
 .empathy { background: var(--sage-deep); color: #fff; overflow: hidden; }
