@@ -578,6 +578,57 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
 .related-posts { background: var(--cream); }
 
 /* ============================================================
+   BLOG BLOCK ON HOME
+   ============================================================ */
+.blog-home { background: var(--cream); }
+.blog-home .blog-grid { margin-bottom: 44px; }
+.blog-home-foot { text-align: center; }
+
+/* ============================================================
+   CONTACT (form -> WhatsApp + map)
+   ============================================================ */
+.contact { background: var(--paper); }
+.contact-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 44px; align-items: stretch; }
+.contact-form {
+  background: var(--paper); border: 1px solid var(--beige-line); border-radius: var(--radius-lg);
+  padding: 40px; box-shadow: var(--shadow-sm);
+}
+.contact-form .field { margin-bottom: 18px; }
+.contact-form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact-form label { display: block; font-size: .85rem; font-weight: 600; color: var(--ink); margin-bottom: 7px; }
+.contact-form input, .contact-form select, .contact-form textarea {
+  width: 100%; padding: 14px 16px; border: 1px solid var(--beige-line); border-radius: 12px;
+  background: var(--cream); font-family: var(--sans); font-size: 1rem; color: var(--ink);
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+  outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(156,160,127,.25);
+}
+.contact-form textarea { resize: vertical; min-height: 118px; }
+.contact-form .btn { width: 100%; margin-top: 6px; }
+.contact-form .form-note { font-size: .82rem; color: var(--ink-soft); margin-top: 14px; text-align: center; }
+.contact-form .form-note svg { width: 15px; height: 15px; fill: var(--sage-dark); vertical-align: -2px; }
+
+.contact-aside { display: flex; flex-direction: column; gap: 20px; }
+.brasil-badge {
+  display: inline-flex; align-items: center; gap: 9px; align-self: flex-start;
+  background: var(--sage); color: #fff; padding: 9px 18px; border-radius: var(--radius-pill);
+  font-size: .88rem; font-weight: 600;
+}
+.brasil-badge svg { width: 17px; height: 17px; fill: #fff; }
+.contact-info { background: var(--cream); border: 1px solid var(--beige-line); border-radius: var(--radius-lg); padding: 30px 32px; }
+.contact-item { display: flex; gap: 15px; align-items: flex-start; }
+.contact-item + .contact-item { margin-top: 18px; }
+.contact-item .ic { width: 46px; height: 46px; flex: none; border-radius: 12px; background: var(--paper); border: 1px solid var(--beige-line); display: flex; align-items: center; justify-content: center; }
+.contact-item .ic svg { width: 22px; height: 22px; fill: var(--sage-dark); }
+.contact-item .lbl { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--sage-dark); font-weight: 700; }
+.contact-item b { display: block; font-family: var(--serif); font-size: 1.2rem; }
+.contact-item a, .contact-item span { color: var(--ink-soft); font-size: .98rem; }
+.contact-item a:hover { color: var(--sage-dark); }
+.contact-map { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--beige-line); box-shadow: var(--shadow-sm); flex: 1; min-height: 240px; }
+.contact-map iframe { width: 100%; height: 100%; min-height: 240px; border: 0; display: block; filter: grayscale(.25) contrast(1.02); }
+
+/* ============================================================
    RESPONSIVE (desktop-first → tablet → mobile)
    ============================================================ */
 @media (max-width: 1080px) {
@@ -588,7 +639,8 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
   .hero-grid { grid-template-columns: 1fr; gap: 48px; }
   .hero-media { max-width: 460px; margin: 0 auto; width: 100%; }
   .stat-float { left: 0; }
-  .empathy-grid, .why-grid, .about-grid, .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .empathy-grid, .why-grid, .about-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-map { min-height: 300px; }
   .areas-grid, .testi-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }
   .author-box { flex-direction: column; text-align: center; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }

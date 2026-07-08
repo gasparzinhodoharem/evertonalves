@@ -83,6 +83,22 @@
     });
   });
 
+  /* ---------- Contact form -> WhatsApp ---------- */
+  var waForm = document.getElementById('waForm');
+  if (waForm) {
+    waForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      function val(id) { var el = document.getElementById(id); return el ? (el.value || '').trim() : ''; }
+      var nome = val('c-nome'), tel = val('c-tel'), assunto = val('c-assunto'), msg = val('c-msg');
+      if (!nome) { var n = document.getElementById('c-nome'); if (n) n.focus(); return; }
+      var parts = ['Olá! Meu nome é ' + nome + '.', 'Assunto: ' + (assunto || 'Outro assunto') + '.'];
+      if (msg) parts.push(msg);
+      if (tel) parts.push('Meu contato: ' + tel + '.');
+      var url = 'https://wa.me/5512996732743?text=' + encodeURIComponent(parts.join(' '));
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+
   /* ---------- Subtle hero parallax (desktop, motion-safe) ---------- */
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var media = document.querySelector('.hero-media');
