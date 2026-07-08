@@ -374,21 +374,47 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
 /* ============================================================
    TESTIMONIALS
    ============================================================ */
-.testi { background: var(--cream); }
-.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.testi-card {
-  background: var(--paper); border: 1px solid var(--beige-line); border-radius: var(--radius);
-  padding: 34px 30px; position: relative; transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+.testi { background: var(--cream); position: relative; overflow: hidden; }
+.testi .emblem-bg { position: absolute; right: -140px; bottom: -120px; width: 460px; opacity: .05; pointer-events: none; z-index: 0; transform: rotate(8deg); }
+.testi .wrap { position: relative; z-index: 1; }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tcard {
+  --ac: var(--sage); --ac2: var(--sage-dark);
+  position: relative; display: flex; flex-direction: column;
+  background: var(--paper); border: 1px solid var(--beige-line); border-radius: var(--radius-lg);
+  padding: 40px 32px 28px; box-shadow: var(--shadow-sm); overflow: hidden;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
 }
-.testi-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-.testi-card .quote { font-family: var(--serif); font-size: 4rem; color: var(--beige); line-height: .6; height: 28px; }
-.testi-card p { font-size: 1.02rem; color: var(--ink); font-style: italic; margin: 12px 0 22px; }
-.testi-stars { display: flex; gap: 3px; margin-bottom: 16px; }
-.testi-stars svg { width: 18px; height: 18px; fill: var(--sage-dark); }
-.testi-who { display: flex; align-items: center; gap: 14px; }
-.testi-ava { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(150deg, var(--sage), var(--sage-dark)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; font-size: 1.2rem; }
-.testi-who b { display: block; font-size: .98rem; }
-.testi-who span { font-size: .82rem; color: var(--ink-soft); }
+.tcard::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--ac), var(--ac2)); }
+.tcard:hover { transform: translateY(-8px); box-shadow: var(--shadow); border-color: var(--ac); }
+.tcard-quote { position: absolute; top: 16px; right: 26px; font-family: var(--serif); font-weight: 700; font-size: 5.5rem; line-height: 1; color: var(--cream-2); z-index: 0; transition: color .3s var(--ease); }
+.tcard:hover .tcard-quote { color: color-mix(in srgb, var(--ac) 22%, var(--cream-2)); }
+.tcard-tag {
+  position: relative; z-index: 1; align-self: flex-start; margin-bottom: 16px;
+  display: inline-flex; align-items: center; gap: 7px; font-size: .72rem; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase; color: #fff; background: linear-gradient(150deg, var(--ac), var(--ac2));
+  padding: 6px 14px; border-radius: var(--radius-pill);
+}
+.tcard-tag svg { width: 13px; height: 13px; fill: #fff; }
+.tcard-text { position: relative; z-index: 1; font-size: 1.06rem; color: var(--ink); line-height: 1.6; flex: 1; margin-bottom: 20px; }
+.tcard-stars { display: flex; gap: 3px; margin-bottom: 20px; }
+.tcard-stars svg { width: 17px; height: 17px; fill: var(--ac2); }
+.tcard-person { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid var(--beige-line); }
+.tcard-ava {
+  width: 54px; height: 54px; flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-weight: 700; font-size: 1.4rem; color: #fff;
+  background: linear-gradient(150deg, var(--ac), var(--ac2)); box-shadow: var(--shadow-sm);
+}
+.tcard-id b { display: flex; align-items: center; gap: 6px; font-family: var(--serif); font-size: 1.18rem; line-height: 1.15; }
+.tcard-id b svg { width: 16px; height: 16px; fill: var(--sage-dark); flex: none; }
+.tcard-role { display: block; font-size: .86rem; color: var(--ink-soft); }
+.tcard-loc { display: inline-flex; align-items: center; gap: 4px; font-size: .8rem; color: var(--sage-dark); font-weight: 600; margin-top: 3px; }
+.tcard-loc svg { width: 13px; height: 13px; fill: currentColor; }
+.testi-trust {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 34px; margin-top: 40px;
+}
+.testi-trust span { display: inline-flex; align-items: center; gap: 9px; font-size: .95rem; font-weight: 500; color: var(--ink); }
+.testi-trust svg { width: 20px; height: 20px; fill: var(--sage-dark); flex: none; }
 
 /* ============================================================
    FAQ
