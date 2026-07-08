@@ -501,6 +501,75 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
 .related-card .link-arrow { font-size: .88rem; }
 
 /* ============================================================
+   BLOG
+   ============================================================ */
+.blog-list { background: var(--paper); }
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.post-card {
+  display: flex; flex-direction: column; background: var(--paper);
+  border: 1px solid var(--beige-line); border-radius: var(--radius); overflow: hidden;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+}
+.post-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); border-color: var(--sage); }
+.post-thumb {
+  position: relative; aspect-ratio: 16/10; overflow: hidden;
+  background: linear-gradient(150deg, var(--sage), var(--sage-dark)); display: flex; align-items: flex-end;
+}
+.post-thumb.alt { background: linear-gradient(150deg, var(--sage-dark), var(--sage-deep)); }
+.post-thumb.ink { background: linear-gradient(150deg, #45463c, var(--ink)); }
+.post-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.post-thumb .emblem { position: absolute; right: -30px; top: -28px; width: 190px; opacity: .16; filter: brightness(0) invert(1); }
+.post-thumb .chip {
+  position: relative; z-index: 1; margin: 16px; background: rgba(255,255,255,.92); color: var(--sage-deep);
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: 7px 14px; border-radius: var(--radius-pill);
+}
+.post-body-c { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+.post-card h3 { font-size: 1.42rem; line-height: 1.15; margin-bottom: 10px; }
+.post-card p { font-size: .96rem; color: var(--ink-soft); flex: 1; margin-bottom: 18px; }
+.post-meta { display: flex; align-items: center; gap: 10px; font-size: .82rem; color: var(--ink-soft); }
+.post-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--beige); }
+.post-card .link-arrow { margin-top: 16px; }
+
+/* Article (blog post) */
+.post-hero .post-info { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 20px; font-size: .92rem; color: var(--ink-soft); }
+.post-hero .chip {
+  background: var(--sage); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; padding: 7px 15px; border-radius: var(--radius-pill);
+}
+.post-hero .post-info .who { display: flex; align-items: center; gap: 9px; }
+.post-hero .post-info .ava { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(150deg,var(--sage),var(--sage-dark)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; font-size: .9rem; }
+.article h2 { scroll-margin-top: 96px; }
+.article .toc {
+  background: var(--cream); border: 1px solid var(--beige-line); border-radius: var(--radius);
+  padding: 24px 28px; margin: 6px 0 30px;
+}
+.article .toc h4 { font-family: var(--sans); font-size: .78rem; text-transform: uppercase; letter-spacing: .14em; color: var(--sage-dark); margin-bottom: 12px; }
+.article .toc ul { display: grid; gap: 8px; }
+.article .toc a { color: var(--ink); font-weight: 500; display: inline-flex; gap: 8px; }
+.article .toc a:hover { color: var(--sage-dark); }
+.article .toc a::before { content: "—"; color: var(--sage); }
+.article blockquote {
+  border-left: 4px solid var(--sage); background: var(--cream); border-radius: 0 12px 12px 0;
+  padding: 18px 24px; margin: 24px 0; font-family: var(--serif); font-size: 1.35rem; font-style: italic; color: var(--ink);
+}
+.article .inline-cta {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  background: var(--cream); border: 1px dashed var(--sage); border-radius: var(--radius);
+  padding: 20px 24px; margin: 28px 0;
+}
+.article .inline-cta p { margin: 0; flex: 1; min-width: 220px; color: var(--ink); font-weight: 500; }
+.author-box {
+  display: flex; gap: 22px; align-items: center; margin-top: 44px; padding: 28px;
+  background: var(--cream); border: 1px solid var(--beige-line); border-radius: var(--radius-lg);
+}
+.author-box .ava { width: 74px; height: 74px; border-radius: 50%; overflow: hidden; flex: none; box-shadow: var(--shadow-sm); }
+.author-box .ava img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.author-box h4 { font-size: 1.35rem; margin-bottom: 4px; }
+.author-box p { font-size: .95rem; color: var(--ink-soft); margin: 0; }
+.related-posts { background: var(--cream); }
+
+/* ============================================================
    RESPONSIVE (desktop-first → tablet → mobile)
    ============================================================ */
 @media (max-width: 1080px) {
@@ -512,7 +581,8 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
   .hero-media { max-width: 460px; margin: 0 auto; width: 100%; }
   .stat-float { left: 0; }
   .empathy-grid, .why-grid, .about-grid, .faq-grid { grid-template-columns: 1fr; gap: 40px; }
-  .areas-grid, .testi-grid { grid-template-columns: repeat(2, 1fr); }
+  .areas-grid, .testi-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  .author-box { flex-direction: column; text-align: center; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
   .stat:nth-child(2)::after { display: none; }
   .process-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
@@ -545,7 +615,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
   .hero-photo-frame { border-radius: 140px 140px var(--radius) var(--radius); }
   .stat-float { padding: 14px 18px; }
   .stat-float .n { font-size: 2rem; }
-  .areas-grid, .testi-grid, .related-grid { grid-template-columns: 1fr; }
+  .areas-grid, .testi-grid, .related-grid, .blog-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .empathy .btn-light, .hero-actions .btn { align-self: stretch; }
   .why-visual .badge-float { right: 0; }
