@@ -536,7 +536,15 @@
             </div>
           </div>
           <div class="contact-map reveal d2">
-            <iframe title="Localização — Ubatuba/SP" src="https://www.google.com/maps?q=Ubatuba,+SP,+Brasil&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            <div class="map-ph" id="mapPh">
+              <div>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+                <b>Ubatuba/SP · Atende todo o Brasil</b>
+                <span>O mapa é carregado pelo Google, que pode usar cookies.</span>
+                <button type="button" class="btn btn-ghost" id="mapLoad">Ver mapa</button>
+              </div>
+            </div>
+            <iframe id="mapFrame" title="Localização — Ubatuba/SP" data-consent-src="https://www.google.com/maps?q=Ubatuba,+SP,+Brasil&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen style="display:none"></iframe>
           </div>
         </div>
       </div>
@@ -585,7 +593,7 @@
       </div>
       <div class="footer-bottom">
         <span>© <span id="ano"></span> Everton Alves · Advogado Trabalhista · OAB/SP 368.151 · CRECI/SP 231012</span>
-        <span>Todos os direitos reservados.</span>
+        <span><a href="politica-de-privacidade.html" style="color:#cfd0c4;">Política de Privacidade</a> · Todos os direitos reservados.</span>
       </div>
     </div>
   </footer>

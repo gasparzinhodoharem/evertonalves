@@ -129,6 +129,45 @@
     });
   }
 
+  /* ---------- Map consent loader ---------- */
+  function loadMap() {
+    var f = document.getElementById('mapFrame'), ph = document.getElementById('mapPh');
+    if (f && !f.getAttribute('src')) {
+      f.setAttribute('src', f.getAttribute('data-consent-src') || '');
+      f.style.display = 'block';
+    }
+    if (ph) ph.style.display = 'none';
+  }
+  var mapLoadBtn = document.getElementById('mapLoad');
+  if (mapLoadBtn) mapLoadBtn.addEventListener('click', loadMap);
+
+  /* ---------- Cookie consent banner (LGPD) ---------- */
+  (function () {
+    var KEY = 'ea_cookie_consent';
+    var choice = null;
+    try { choice = localStorage.getItem(KEY); } catch (e) {}
+
+    function applyConsent(c) { if (c === 'accepted') loadMap(); }
+
+    if (choice) { applyConsent(choice); return; }
+
+    var bar = document.createElement('div');
+    bar.className = 'cookie-bar';
+    bar.setAttribute('role', 'dialog');
+    bar.setAttribute('aria-label', 'Aviso de cookies');
+    bar.innerHTML =
+      '<span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 00.34-19.99 2.5 2.5 0 01-2.6 2.99 2.5 2.5 0 01-2.24 3.24A2.5 2.5 0 015 9.5 10 10 0 0112 2zm-2 6a1.2 1.2 0 100 2.4A1.2 1.2 0 0010 8zm5 3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4zm-6 4a1.3 1.3 0 100 2.6A1.3 1.3 0 009 15zm6 1a1 1 0 100 2 1 1 0 000-2z"/></svg></span>' +
+      '<div class="cc-text"><b>Este site usa cookies</b>Usamos cookies essenciais para o funcionamento do site e recursos de terceiros (como o mapa do Google). Você decide sobre os cookies não essenciais. Saiba mais na <a href="/politica-de-privacidade.html">Política de Privacidade</a>.</div>' +
+      '<div class="cc-actions"><button type="button" class="btn btn-ghost" data-cc="reject">Recusar</button><button type="button" class="btn btn-sage" data-cc="accept">Aceitar</button></div>';
+    document.body.appendChild(bar);
+    requestAnimationFrame(function () { bar.classList.add('show'); });
+
+    function close() { bar.classList.remove('show'); setTimeout(function () { if (bar.parentNode) bar.parentNode.removeChild(bar); }, 450); }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} applyConsent(v); close(); }
+    bar.querySelector('[data-cc="accept"]').addEventListener('click', function () { set('accepted'); });
+    bar.querySelector('[data-cc="reject"]').addEventListener('click', function () { set('rejected'); });
+  })();
+
   /* ---------- Subtle hero parallax (desktop, motion-safe) ---------- */
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var media = document.querySelector('.hero-media');
