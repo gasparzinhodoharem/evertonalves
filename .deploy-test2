@@ -1,2 +1,0 @@
-post-PATCH deploy survival test (pilot) - 2026-07-09
-Confirms Cloudflare Pages auto-deploy still fires after PATCHing the project.
