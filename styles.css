@@ -220,6 +220,36 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
 .stat-float .n { font-family: var(--serif); font-size: 2.6rem; font-weight: 700; color: var(--sage-dark); line-height: 1; }
 .stat-float .t { font-size: .82rem; color: var(--ink-soft); line-height: 1.3; max-width: 15ch; }
 
+/* Hero ocupa exatamente a altura da janela no desktop, adaptando-se
+   dinamicamente a cada resolucao para que todo o conteudo apareca de imediato. */
+@media (min-width: 1081px) {
+  .hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--header-h) + 12px);
+    padding-bottom: 28px;
+  }
+  .hero .wrap { width: 100%; }
+  /* limita a altura da imagem para nunca ultrapassar a janela em telas baixas;
+     mantem a proporcao 4/5 mas corta topo/base quando a altura disponivel e menor */
+  .hero-photo-frame {
+    max-height: calc(100dvh - var(--header-h) - 56px);
+    margin-left: auto;
+  }
+}
+/* Telas desktop baixas: comprime o texto do hero para caber tudo na janela */
+@media (min-width: 1081px) and (max-height: 760px) {
+  .hero { padding-top: calc(var(--header-h) + 4px); padding-bottom: 18px; }
+  .hero-badges { margin-bottom: 15px; }
+  .hero h1 { font-size: clamp(2.3rem, 3.4vw, 3.4rem); margin-bottom: 15px; }
+  .hero h1 .accent { margin-top: .14em; }
+  .hero-sub { font-size: 1.06rem; margin-bottom: 20px; }
+  .hero-note { margin-top: 14px; }
+  .hero-photo-frame { max-height: calc(100dvh - var(--header-h) - 36px); }
+}
+
 /* ============================================================
    TRUST / STATS BAR
    ============================================================ */
