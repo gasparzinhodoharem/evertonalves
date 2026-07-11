@@ -730,7 +730,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
 .contact-form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .contact-form label { display: block; font-size: .85rem; font-weight: 600; color: var(--ink); margin-bottom: 7px; }
 .contact-form input, .contact-form select, .contact-form textarea {
-  width: 100%; padding: 14px 16px; border: 1px solid var(--beige-line); border-radius: 12px;
+  width: 100%; min-width: 0; padding: 14px 16px; border: 1px solid var(--beige-line); border-radius: 12px;
   background: var(--cream); font-family: var(--sans); font-size: 1rem; color: var(--ink);
   transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
 }
@@ -751,12 +751,13 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
 .brasil-badge svg { width: 17px; height: 17px; fill: #fff; }
 .contact-info { background: var(--cream); border: 1px solid var(--beige-line); border-radius: var(--radius-lg); padding: 30px 32px; }
 .contact-item { display: flex; gap: 15px; align-items: flex-start; }
+.contact-item > div { min-width: 0; }
 .contact-item + .contact-item { margin-top: 18px; }
 .contact-item .ic { width: 46px; height: 46px; flex: none; border-radius: 12px; background: var(--paper); border: 1px solid var(--beige-line); display: flex; align-items: center; justify-content: center; }
 .contact-item .ic svg { width: 22px; height: 22px; fill: var(--sage-dark); }
 .contact-item .lbl { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--sage-dark); font-weight: 700; }
 .contact-item b { display: block; font-family: var(--serif); font-size: 1.2rem; }
-.contact-item a, .contact-item span { color: var(--ink-soft); font-size: .98rem; }
+.contact-item a, .contact-item span { color: var(--ink-soft); font-size: .98rem; overflow-wrap: anywhere; }
 .contact-item a:hover { color: var(--sage-dark); }
 .contact-map { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--beige-line); box-shadow: var(--shadow-sm); flex: 1; min-height: 240px; }
 .contact-map iframe { width: 100%; height: 100%; min-height: 240px; border: 0; display: block; filter: grayscale(.25) contrast(1.02); }
@@ -842,6 +843,9 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
   .stat-float { padding: 14px 18px; }
   .stat-float .n { font-size: 2rem; }
   .areas-grid, .testi-grid, .related-grid, .blog-grid { grid-template-columns: 1fr; }
+  .contact-form .row2 { grid-template-columns: 1fr; gap: 0; }
+  .contact-form .row2 .field { margin-bottom: 18px; }
+  .contact-form { padding: 28px 22px; }
   .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 20px 10px; }
   .empathy .btn-light, .hero-actions .btn { align-self: stretch; }
   .why-visual .badge-float { right: 0; }
