@@ -900,7 +900,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
     border-radius: 0; box-shadow: none; background: none;
     aspect-ratio: auto; max-height: none; margin: 0;
   }
-  .hero-slide { object-position: center 20%; }
+  .hero-photo-frame img { object-position: center 20%; }
   /* funde a base da foto com o fundo creme, ligando na frase de impacto */
   .hero-photo-frame::after {
     content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
@@ -908,9 +908,10 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
   }
 
   /* Frase de impacto abaixo da foto, centralizada */
-  .hero-copy { order: 0; text-align: center; max-width: 100%; margin-top: -4px; }
-  .hero-badges { justify-content: center; margin-bottom: 18px; }
+  .hero-copy { order: 0; display: flex; flex-direction: column; text-align: center; max-width: 100%; margin-top: -4px; }
   .hero h1 { margin-bottom: 18px; }
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-note { justify-content: center; }
+  /* selos vao para baixo do texto (nao no topo) */
+  .hero-badges { order: 9; justify-content: center; margin: 24px 0 0; }
 }
