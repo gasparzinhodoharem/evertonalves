@@ -880,7 +880,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
    ficam em @media (min-width:1081px)).
    ============================================================ */
 @media (max-width: 680px) {
-  .hero { padding-top: 0; padding-bottom: 44px; }
+  .hero { padding-top: var(--header-h); padding-bottom: 44px; }
   .hero .wrap { max-width: 100%; }
   .hero-grid { display: flex; flex-direction: column; gap: 0; }
 
