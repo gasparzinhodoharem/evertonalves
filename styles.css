@@ -166,7 +166,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
    HERO
    ============================================================ */
 .hero {
-  position: relative; padding-top: calc(var(--header-h) + 70px); padding-bottom: 96px;
+  position: relative; padding-top: calc(var(--header-h) + 22px); padding-bottom: 96px;
   background:
     radial-gradient(1200px 700px at 82% -5%, rgba(156,160,127,.24), transparent 60%),
     radial-gradient(900px 600px at -5% 100%, rgba(201,198,176,.34), transparent 55%),
