@@ -113,6 +113,31 @@
     whyGo(0); whyStart();
   }
 
+  /* ---------- Hero slideshow (3 fotos advogado + trabalhador) ---------- */
+  var heroSlider = document.getElementById('heroSlider');
+  if (heroSlider) {
+    var hSlides = heroSlider.querySelectorAll('.hero-slide');
+    var hDots = document.querySelectorAll('#heroDots .hd');
+    var hi = 0, htimer = null;
+    var hReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function heroGo(n) {
+      hi = (n + hSlides.length) % hSlides.length;
+      for (var i = 0; i < hSlides.length; i++) {
+        hSlides[i].classList.toggle('is-active', i === hi);
+        if (hDots[i]) hDots[i].classList.toggle('is-active', i === hi);
+      }
+    }
+    function heroStart() { if (!hReduce && hSlides.length > 1) { heroStop(); htimer = setInterval(function () { heroGo(hi + 1); }, 4200); } }
+    function heroStop() { if (htimer) { clearInterval(htimer); htimer = null; } }
+    hDots.forEach(function (d, i) { d.addEventListener('click', function () { heroGo(i); heroStart(); }); });
+    var frame = heroSlider.closest('.hero-photo-frame');
+    if (frame) {
+      frame.addEventListener('mouseenter', heroStop);
+      frame.addEventListener('mouseleave', heroStart);
+    }
+    heroGo(0); heroStart();
+  }
+
   /* ---------- Contact form -> WhatsApp ---------- */
   var waForm = document.getElementById('waForm');
   if (waForm) {
