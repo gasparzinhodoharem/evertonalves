@@ -915,12 +915,13 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
     border-radius: 0; box-shadow: none; background: none;
     aspect-ratio: auto; max-height: none; margin: 0;
   }
-  .hero-photo-frame img { object-position: center 20%; }
-  /* funde a base da foto com o fundo creme, ligando na frase de impacto */
-  .hero-photo-frame::after {
-    content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
-    background: linear-gradient(to bottom, transparent 46%, rgba(242,241,233,.7) 76%, var(--cream) 100%);
+  /* funde a base da foto direto com o fundo da secao (sem linha divisoria) */
+  .hero-photo-frame img {
+    object-position: center 20%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 44%, rgba(0,0,0,.55) 74%, transparent 96%);
+            mask-image: linear-gradient(to bottom, #000 44%, rgba(0,0,0,.55) 74%, transparent 96%);
   }
+  .hero-photo-frame::after { display: none; }
 
   /* Frase de impacto abaixo da foto, centralizada */
   .hero-copy { order: 0; display: flex; flex-direction: column; text-align: center; max-width: 100%; margin-top: -4px; }
