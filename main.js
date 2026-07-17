@@ -148,10 +148,15 @@
       if (!nome) { var n = document.getElementById('c-nome'); if (n) n.focus(); return; }
       var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       if (!emailOk) { var em = document.getElementById('c-email'); if (em) em.focus(); return; }
-      var parts = ['Olá! Meu nome é ' + nome + '.', 'Assunto: ' + (assunto || 'Outro assunto') + '.'];
-      if (msg) parts.push(msg);
-      parts.push('Meu e-mail: ' + email + '.');
-      var url = 'https://wa.me/5512996732743?text=' + encodeURIComponent(parts.join(' '));
+      var linhas = [
+        'Olá, estou vindo pelo site, segue meus dados.',
+        '',
+        '*Nome:* ' + nome,
+        '*E-mail:* ' + email,
+        '*Assunto:* ' + (assunto || 'Outro assunto'),
+        '*Minha dúvida:* ' + (msg || '-')
+      ];
+      var url = 'https://wa.me/5512996732743?text=' + encodeURIComponent(linhas.join('\n'));
       window.open(url, '_blank', 'noopener');
     });
   }
