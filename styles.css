@@ -576,7 +576,11 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate
    ============================================================ */
 .site-footer { background: var(--ink); color: #cfd0c4; padding: 76px 0 30px; font-size: .96rem; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; }
-.footer-brand img { height: 108px; margin-bottom: 18px; }
+.footer-logo-mark { height: 62px; display: block; margin-bottom: 10px; }
+.footer-logo-text {
+  display: block; font-family: var(--serif); font-size: 1.5rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--sage); margin-bottom: 18px;
+}
 .footer-brand p { color: #a9aa9c; font-size: .92rem; max-width: 30ch; }
 .footer-col h4 { color: #fff; font-family: var(--sans); font-size: .82rem; text-transform: uppercase; letter-spacing: .16em; margin-bottom: 18px; font-weight: 700; }
 .footer-col ul { display: grid; gap: 10px; }
