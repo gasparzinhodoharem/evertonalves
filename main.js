@@ -144,11 +144,13 @@
     waForm.addEventListener('submit', function (e) {
       e.preventDefault();
       function val(id) { var el = document.getElementById(id); return el ? (el.value || '').trim() : ''; }
-      var nome = val('c-nome'), tel = val('c-tel'), assunto = val('c-assunto'), msg = val('c-msg');
+      var nome = val('c-nome'), email = val('c-email'), assunto = val('c-assunto'), msg = val('c-msg');
       if (!nome) { var n = document.getElementById('c-nome'); if (n) n.focus(); return; }
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!emailOk) { var em = document.getElementById('c-email'); if (em) em.focus(); return; }
       var parts = ['Olá! Meu nome é ' + nome + '.', 'Assunto: ' + (assunto || 'Outro assunto') + '.'];
       if (msg) parts.push(msg);
-      if (tel) parts.push('Meu contato: ' + tel + '.');
+      parts.push('Meu e-mail: ' + email + '.');
       var url = 'https://wa.me/5512996732743?text=' + encodeURIComponent(parts.join(' '));
       window.open(url, '_blank', 'noopener');
     });
